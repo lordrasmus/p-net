@@ -13,6 +13,7 @@ notifications:
 script:
 #   - sudo apt-get install ${CC} ${CXX}
    - cmake .
+   - make
 
 compiler: gcc 
 dist: focal
