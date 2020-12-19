@@ -12,10 +12,10 @@ notifications:
       - lordrasmus@gmail.com
 
 
-#script:
+script:
 #   - sudo apt-get install ${CC} ${CXX}
-#   - cmake .
-#   - make pn_dev
+   - cmake .
+   - make pn_dev
 
 #compiler: gcc 
 dist: focal
