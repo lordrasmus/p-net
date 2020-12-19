@@ -1,20 +1,53 @@
 language: c
 
-dist: bionic
+env:
+  global:
+    secure: "SS5efj7kz0thoFmWqwrLwvXVvMMviJ2tKk+y0E6FyiVXZ173qRPn5ZGlIpLVVwx0pev1tf92+RQ/BmTha3lREf+qc9Gt9G3lBXzch4m5+gKAOG2XWvqSKnD2nVGBVjZvvC579Bt1JhFJ1bKMETGdJGOOCNU2+1TQlCfFhOPMCuORBD5m1N2kDWhGoDr8jhoV884gFeLYvSoQLbrXLo9IXVsj+KWI97Ck8SMCtT3oPc7jtqQrsZ4ECS5N+wXvR71HPpgP1lIe/K/wvvkLQmZvVWnVsroiiwGQbWKJuN0CcbG2ooxkzYT4BMbCoVdyezxFZNkyMQB7Adzgera+Cymh0zmQadK4SYuPR6wl+K9K8wgfGDikAw0dUyVnI2JjDvGjRq9IFy8nUfOK70OSP2OLG0FsSLCYENkm5+/iek41gEd7W0A7Kfz6n+4djGguqML8TJaKMY2qQ2so/hyE1Pv2ne2yHVNjXhDO0VBBgSULqRawWejNlvlubD0As9ea24CCgNYsiG9Zps7yERN14fL6to1u9pBxDxLyoqeqV2ngj5HTV9FAly6Q2lXUoqXjf+YTjkiFtNLFj6qSbHF2J/aGsuz+Cxn2fMB1Vh1LDTsQGPEaSF2GDg3CXOa9E8PXjRdLC2i0Aub+92yUdnARa54nhZ7nxF9Ly8lfc0STPMN3O7U="
+
+
+notifications:
+   email: 
+      - lordrasmus@gmail.com
+
+
+#script:
+   #- sudo apt-get install ${CC} ${CXX}
+
+compiler: gcc 
+dist: xenial
 
 addons:
-  apt:
-    packages:
-      - doxygen
-      - libsnmp-dev
+   apt:
+      packages: ['cmake'] 
 
-# Add latest cmake
-before_install:
-  - wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | sudo apt-key add -
-  - sudo apt-add-repository -y 'deb https://apt.kitware.com/ubuntu/ bionic main'
-  - sudo apt-get -q update
-  - sudo apt-get -y install cmake
+   
+jobs:
+   include:
+      
+      
+   ##########################################################################################
+   #     Linux Test ( Coverity )                                                            #
+   ##########################################################################################
 
-script:
-  - /usr/bin/cmake -B build -S . -DCMAKE_BUILD_TYPE=Debug -DPNET_OPTION_SNMP=ON
-  - /usr/bin/cmake --build build --target all check docs install -j4
+    - os: linux
+      stage: linux
+      env: CC=gcc CXX=g++
+      addons:
+        apt:
+            packages: ['cmake']
+        coverity_scan:
+            project:
+                name: lordrasmus/p-net
+
+            notification_email: 
+                - lordrasmus@gmail.com
+
+            build_command: cmake .
+            branch_pattern: master
+
+ 
+     
+
+    
+
+
