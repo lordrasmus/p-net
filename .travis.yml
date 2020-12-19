@@ -1,4 +1,3 @@
-language: c
 
 env:
   global:
@@ -11,21 +10,30 @@ notifications:
       - lordrasmus@gmail.com
 
 
-script:
+#script:
 #   - sudo apt-get install ${CC} ${CXX}
-   - cmake .
-   - make pn_dev
+#   - cmake .
+#   - make pn_dev
 
-compiler: gcc 
+#compiler: gcc 
 dist: focal
 
 addons:
    apt:
       packages: ['cmake'] 
 
-coverity_scan:
-   project:
-      name: lordrasmus/p-net
+#coverity_scan:
+#   project:
+#      name: lordrasmus/p-net
+
+addons:
+  coverity_scan:
+    project:
+      name: "lordrasmus/p-net"
+    notification_email: lordrasmus@gmail.com
+    build_command_prepend: cmake .
+    build_command: make pn_dev
+    branch_pattern: master
    
 #jobs:
 #   include:
