@@ -10,8 +10,9 @@ notifications:
       - lordrasmus@gmail.com
 
 
-#script:
-   #- sudo apt-get install ${CC} ${CXX}
+script:
+   - sudo apt-get install ${CC} ${CXX}
+   - cmake .
 
 compiler: gcc 
 dist: xenial
