@@ -15,7 +15,7 @@ script:
    - cmake .
 
 compiler: gcc 
-dist: xenial
+dist: focal
 
 addons:
    apt:
