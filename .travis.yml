@@ -2,7 +2,8 @@ language: c
 
 env:
   global:
-    secure: "SS5efj7kz0thoFmWqwrLwvXVvMMviJ2tKk+y0E6FyiVXZ173qRPn5ZGlIpLVVwx0pev1tf92+RQ/BmTha3lREf+qc9Gt9G3lBXzch4m5+gKAOG2XWvqSKnD2nVGBVjZvvC579Bt1JhFJ1bKMETGdJGOOCNU2+1TQlCfFhOPMCuORBD5m1N2kDWhGoDr8jhoV884gFeLYvSoQLbrXLo9IXVsj+KWI97Ck8SMCtT3oPc7jtqQrsZ4ECS5N+wXvR71HPpgP1lIe/K/wvvkLQmZvVWnVsroiiwGQbWKJuN0CcbG2ooxkzYT4BMbCoVdyezxFZNkyMQB7Adzgera+Cymh0zmQadK4SYuPR6wl+K9K8wgfGDikAw0dUyVnI2JjDvGjRq9IFy8nUfOK70OSP2OLG0FsSLCYENkm5+/iek41gEd7W0A7Kfz6n+4djGguqML8TJaKMY2qQ2so/hyE1Pv2ne2yHVNjXhDO0VBBgSULqRawWejNlvlubD0As9ea24CCgNYsiG9Zps7yERN14fL6to1u9pBxDxLyoqeqV2ngj5HTV9FAly6Q2lXUoqXjf+YTjkiFtNLFj6qSbHF2J/aGsuz+Cxn2fMB1Vh1LDTsQGPEaSF2GDg3CXOa9E8PXjRdLC2i0Aub+92yUdnARa54nhZ7nxF9Ly8lfc0STPMN3O7U="
+     - secure: "DnxBN1TkdYCYxbP3dr8sIoovmGbEr0FuFwtcvU9LDKXHteTb/GbnSrf9/RDbh8aZRtJmHGyMO3giQHjsy6q9gCMzOWfliP/rQIt6QeQq7WKNWTk3qcnWFjJW+3vlCVPPBEQJm0TNORjsBqMjs/4sED+JOliCAJIb9akORw99iNNSy0eHRsLFtv3Cu5l2KqE3l/q93Z5tzqrC/ern/oBWAbGT4Dg68fxQ7RFZPODRm/uqwL6Zh7KghTZrQU8E/SWauGEp6whAC6HB/i3dv6nkmunoyf/w0hKXmae4JC3hjjfDzHAnHzZwc9btTGAAOI6BISFLPERtRLZTYTtE5qISoVJ+h3HLee27CVo7T8XRikoMkEmEQRef3+eBQlA2CQpvwB/KaiCefoKUDdv26THYsG7DS56L1KWkyrLrLhPiG8rtdy0LfYsyO/gnio3LLhWIQ4jMP+WLjdzR0jLG/JLWzKjHjHuui8Bh2BRCNvpXNsK3//Axsl6Pydobr4ZNcC08Lm6RoLzxyeI13xZl2Vbs+K8PftsneEXSgGjZtYhKjEPL8DPNZ9asJ6TX99qQysu2fqgw5fIstJW3I1P1ZBYVUnRD6hYjWEZUMv+nRaezvx54JKzUYaq9oJP/IZDD72lQM5D4IO0gwyxvho3UOUxmQ8eKdDHVBcHKwYMUfVUdrBk="
+
 
 
 notifications:
@@ -13,7 +14,7 @@ notifications:
 script:
 #   - sudo apt-get install ${CC} ${CXX}
    - cmake .
-   - make
+   - make pn_dev
 
 compiler: gcc 
 dist: focal
@@ -22,6 +23,9 @@ addons:
    apt:
       packages: ['cmake'] 
 
+coverity_scan:
+   project:
+      name: lordrasmus/p-net
    
 #jobs:
 #   include:
